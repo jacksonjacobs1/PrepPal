@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
-export default function HomeTab(){
+export default function HomeTab({navigation}){
     const name = "Richard";
     return (
         <View style={styles.container}>
@@ -10,6 +10,7 @@ export default function HomeTab(){
             <Button style={styles.submitButton}
             title="See All Saved Recipes"
             color ="#E5101C"
+            onPress={() => navigation.navigate('SavedRecipes')}
             />
         </View>
     )
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     },
     container: {
       flex: 1,
-      backgroundColor: 'white',
+      backgroundColor: '0CC3F9',
       alignItems: 'center',
       justifyContent: 'flex-start',
     },
