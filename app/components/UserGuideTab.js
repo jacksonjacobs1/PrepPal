@@ -1,10 +1,10 @@
 import React from "react";
-import { ScrollView, Text, Title } from 'react-navtive';
+import { ScrollView, Text } from 'react-native';
 
-export default function UserGuideTab() {
+function UserGuideTab() {
   return (
     <ScrollView>
-      <Title>How to Use This App</Title>
+      <Text>How to Use This App</Text>
       <Text>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim praesent elementum facilisis leo vel. Sed turpis tincidunt id aliquet risus. Aliquet sagittis id consectetur purus ut. Convallis tellus id interdum velit. Tellus orci ac auctor augue mauris augue neque gravida. Fermentum leo vel orci porta non pulvinar neque laoreet suspendisse. Urna porttitor rhoncus dolor purus non enim praesent elementum. Risus in hendrerit gravida rutrum. At tempor commodo ullamcorper a lacus.
       </Text>
@@ -17,3 +17,5 @@ export default function UserGuideTab() {
     </ScrollView>
   )
 };
+
+export default UserGuideTab;
