@@ -1,15 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Container from './app/components/Container'
 
-export default function App() {
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>It's Harrison's code now, bitch</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Container/>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -19,3 +17,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
