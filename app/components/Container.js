@@ -7,11 +7,13 @@ import { View, Button, Text } from 'react-native';
 
 //Screens
 import HomeTab from './HomeTab'
-import SavedRecipes from './SavedRecipesTab'
+import SavedRecipesTab from './SavedRecipesTab'
+import UserGuideTab from './UserGuideTab';
 
 //Screen names
 const homeName = 'Home'
 const savedRecipesName = 'SavedRecipes'
+const userGuideName = 'UserGuide'
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +34,8 @@ const Container = () => {
                         } else if (rn === savedRecipesName) {
                             iconName = focused ? 'list' : 'list-outline';
 
+                        } else if (rn === userGuideName) {
+                            iconName = focused ? 'book' : 'book-outline';
                         }
 
                         // You can return any component that you like here!
@@ -41,7 +45,8 @@ const Container = () => {
                 >
 
                 <Tab.Screen name={homeName} component={HomeTab} />
-                <Tab.Screen name={savedRecipesName} component={SavedRecipes} />
+                <Tab.Screen name={savedRecipesName} component={SavedRecipesTab} />
+                <Tab.Screen name={userGuideName} component={UserGuideTab} />
 
             </Tab.Navigator>
         </NavigationContainer>
