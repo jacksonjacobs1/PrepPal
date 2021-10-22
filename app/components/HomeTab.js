@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: "#20232a",
         color: "red",
-        backgroundColor: "purple",
+        backgroundColor: "blue",
         fontSize: 30,
         fontWeight: "bold",
         borderRadius: 6,
@@ -46,10 +46,5 @@ const styles = StyleSheet.create({
       backgroundColor: '#0CC3F9',
       alignItems: 'center',
       justifyContent: 'flex-start',
-    },
-    submitButton: {
-        position: 'absolute',
-        bottom:0,
-        left:0,
     },
 });
