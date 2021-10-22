@@ -7,20 +7,16 @@ export default function HomeTab({navigation}){
         <View style={styles.container}>
             <Text style={styles.title1}>Hello {name}, Welcome to PrepPal! </Text>
             <Text style={styles.title2}>Recent Recipes:</Text>
-            <Button
+            <Button style={styles.submitButton}
             title="See All Saved Recipes"
-            color="#F99A0C"
-            onPress={() => navigation.navigate('SavedRecipes')}/>
+            color ="#E5101C"
+            onPress={() => navigation.navigate('SavedRecipes')}
+            />
         </View>
     )
 }
 
-
 const styles = StyleSheet.create({
-    listContainer: {
-        flex: 1,
-        backgroundColor: "#0CC3F9"
-    },
     title1: {
         marginTop: 0,
         paddingVertical: 6,
@@ -47,9 +43,13 @@ const styles = StyleSheet.create({
     },
     container: {
       flex: 1,
-      backgroundColor: 'white',
+      backgroundColor: '0CC3F9',
       alignItems: 'center',
       justifyContent: 'flex-start',
     },
+    submitButton: {
+        position: 'absolute',
+        bottom:0,
+        left:0,
+    },
 });
-
