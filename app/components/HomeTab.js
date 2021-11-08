@@ -13,7 +13,7 @@ export default function HomeTab({navigation}){
             <Button style={styles.submitButton}
             title="See All Saved Recipes"
             color ="#E5101C"
-            onPress={() => navigation.navigate('SavedRecipes')}
+            onPress={() => navigation.navigate('Saved Recipes')}
             />
         </View>
     )
