@@ -1,29 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { TextInput } from 'react-native-paper';
-import SelectDropdown from 'react-native-select-dropdown';
-
-const matchOptions = ["Low", "Medium", "High", "Total"]
-const dietaryRestrictionOptions = ["Yes", "No"]
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { Chip, TextInput } from 'react-native-paper';
 
 function SearchTab() {
+
+  const [ingredients, setIngredients] = useState([]);
+
   return (
-    <View>
-      <Text>This is the page that will allow the user to search for new recipes online. </Text>
-      <Text> </Text>
-      <Text>Enter available ingredients:</Text>
-      <SafeAreaView>
-        <TextInput style={styles.ingredientEntryBarStyle}/>
-        <TextInput style={styles.ingredientEntryBarStyle}/>
-        <TextInput style={styles.ingredientEntryBarStyle}/>
-      </SafeAreaView>
-      <Text> </Text>
-      <Text> Search Options:</Text>
-      <Text> </Text>
-      <Text> Match existing ingredients</Text>
-      <SelectDropdown data={matchOptions}></SelectDropdown>
-      <Text> Account for dietary restrictions?</Text>
-      <SelectDropdown data={dietaryRestrictionOptions}></SelectDropdown>
+
+    <View style={styles.container}>
+      <Text style={styles.title}>Search for Recipes</Text>
+      <TextInput
+        label="Enter an ingredient"
+        value={ingredients}
+        onChangeText={text => setIngredients(ingredients.concat(text))}
+      />
+      <Surface style={styles.box}>
+        {ingredients.map(ingredient => (
+          <Chip onClose={() => {
+            var index = ingredients.indexOf(ingredient);
+            if (index > -1) {
+              ingredients.splice(index, 1);
+            }
+            setIngredients(ingredients);
+          }}
+          >
+            {ingredient}
+          </Chip>
+        ))}
+      </Surface>
+
     </View>
   )
 }
@@ -37,7 +43,21 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: "center"
+  },
+  box: {
+    flexDirection: "row",
+    padding: 8,
+    height: 80,
+    width: 80,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    elevation: 0,
+    color: '#fafafa'
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "bold"
   }
-})
+});
 
 export default SearchTab;
