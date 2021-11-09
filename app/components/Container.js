@@ -10,6 +10,7 @@ import HomeTab from './HomeTab'
 import SavedRecipesTab from './SavedRecipesTab'
 import SearchTab from './SearchTab'
 import UserGuideTab from './UserGuideTab';
+import Login from './Login';
 
 //Screen names
 const homeName = 'Home'
@@ -19,12 +20,14 @@ const userGuideName = 'User Guide'
 
 const Tab = createBottomTabNavigator();
 
+//Props
+const loggedIn = false
 
 const Container = () => {
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName={homeName}
+                initialRouteName={'Login'}
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
@@ -54,6 +57,7 @@ const Container = () => {
                 <Tab.Screen name={savedRecipesName} component={SavedRecipesTab} />
                 <Tab.Screen name={searchTabName} component={SearchTab} />
                 <Tab.Screen name={userGuideName} component={UserGuideTab} />
+                <Tab.Screen name='Login' component={Login}/>
 
             </Tab.Navigator>
         </NavigationContainer>

@@ -1,10 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Container from './app/components/Container'
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth"
+import { getFirestore } from 'firebase/firestore'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,21 +19,16 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp)
 
-function App() {
-  return (
-    <Container/>
-  );
-};
+function signIn(email, password){
+    return signInWithEmailAndPassword(auth, email, password);
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function signUp(email, password){
+    return createUserWithEmailAndPassword(auth, email, password);
+}
 
-export default App;
+export {firebaseApp, auth, onAuthStateChanged, db, signUp};
