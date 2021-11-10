@@ -3,9 +3,14 @@ import {StyleSheet, ScrollView, Text } from 'react-native';
 import {SearchBar} from 'react-native-elements';
 
 function SavedRecipesTab(props) {
+    const [searchText, setSearchText] = React.useState('')
     return (
         <ScrollView>
-            <SearchBar placeholder="Search recipes"> </SearchBar>
+            <SearchBar
+                placeholder="Search recipes"
+                onChangeText={searchText => setSearchText(searchText)}
+                value={searchText}
+            />
             <Text style={styles.savedRecipesTitle}> Your saved recipes: </Text>
             <Text>
                 {'\u2B24'} Recipe 1
@@ -24,7 +29,11 @@ function SavedRecipesTab(props) {
             </Text>
             <Text> </Text>
             <Text>
-                (Note: the above search bar is still under construction.)
+                The text currently in the search bar is displayed below:
+            </Text>
+            <Text> </Text>
+            <Text>
+                {searchText}
             </Text>
         </ScrollView>
     );
