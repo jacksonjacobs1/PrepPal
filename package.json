@@ -9,13 +9,20 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/traverse": "^7.16.3",
+    "@callstack/react-theme-provider": "^3.0.7",
+    "@cnakazawa/watch": "^1.0.4",
+    "@expo/vector-icons": "^12.0.5",
+    "@firebase/app": "^0.7.7",
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "expo": "~42.0.1",
     "expo-status-bar": "~1.0.4",
+    "firebase": "^9.4.0",
     "ionicons": "^5.5.4",
     "jest-expo": "^43.0.1",
+    "material-icons": "^1.10.1",
     "mongoose": "^6.0.12",
     "puppeteer": "^5.5.0",
     "puppeteer-cluster": "^0.22.0",
@@ -27,20 +34,27 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-select-dropdown": "^1.3.0",
+    "react-native-vector-icons": "^9.0.0",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@babel/core": "^7.16.0",
-=======
-    "@babel/core": "^7.9.0",
->>>>>>> e4111ff522fc6e1998896b140d31b6103fd33294
+    "@testing-library/react": "^12.1.2",
+    "jest-dom": "^4.0.0",
     "react-test-renderer": "^17.0.2"
   },
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
     ]
   },
   "private": true
