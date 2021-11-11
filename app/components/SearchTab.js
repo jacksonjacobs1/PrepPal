@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import SelectDropdown from 'react-native-select-dropdown';
 
@@ -10,7 +10,7 @@ function SearchTab() {
   const [selectedItem1, setMenuText1] = React.useState('')
   const [selectedItem2, setMenuText2] = React.useState('')
   return (
-    <View>
+    <ScrollView>
       <Text>This is the page that will allow the user to search for new recipes online. </Text>
       <Text> </Text>
       <Text>Enter available ingredients:</Text>
@@ -44,7 +44,7 @@ function SearchTab() {
       <Text>
         {selectedItem2}
       </Text>
-    </View>
+    </ScrollView>
   )
 }
 
