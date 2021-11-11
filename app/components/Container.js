@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //import {Ionicons} from 'react-native-vector-icons/Ionicons';
 import {Ionicons} from '@expo/vector-icons';
+import { useAuth } from '../firebaseApp';
 
 import { View, Button, Text } from 'react-native';
 
@@ -21,14 +22,13 @@ const userGuideName = 'User Guide'
 
 const Tab = createBottomTabNavigator();
 
-//Props
-const loggedIn = false
 
 const Container = () => {
+
     return (
         <NavigationContainer>
             <Tab.Navigator
-                initialRouteName={'Login'}
+                initialRouteName={homeName}
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
@@ -58,7 +58,6 @@ const Container = () => {
                 <Tab.Screen name={savedRecipesName} component={SavedRecipesTab} />
                 <Tab.Screen name={searchTabName} component={SearchTab} />
                 <Tab.Screen name={userGuideName} component={UserGuideTab} />
-                <Tab.Screen name='Login' component={Login}/>
 
             </Tab.Navigator>
         </NavigationContainer>

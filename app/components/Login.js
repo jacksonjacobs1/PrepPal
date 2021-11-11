@@ -2,15 +2,17 @@ import { signInAnonymously } from "@firebase/auth";
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { TextInput, Button } from "react-native-paper";
-import {signUp} from '../firebaseApp'
+import {signUp, signIn} from '../firebaseApp'
 
 export default function Login({ navigation }) {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
     async function handleSignUp() {
+        this.props.login_handler
         try {
             await signUp(email, password)
+            //TODO add code to switch tabs
         } catch (error) {
             console.log(error.toString())
         }
@@ -19,10 +21,9 @@ export default function Login({ navigation }) {
     async function handleSignIn() {
         try {
             await signIn(email, password)
+            //TODO add code to switch tabs
         } catch (error) {
             console.log(error.toString())
-        } finally {
-            
         }
     }
 
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 4,
         padding: 10,
+        top: 100,
         justifyContent: 'flex-start',
     },
     button: {

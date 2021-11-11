@@ -2,9 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Container from './app/components/Container'
+import Login from './app/components/Login';
+import { onAuthStateChanged} from '@firebase/auth';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { useAuth, logout } from './app/firebaseApp';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,9 +28,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function App() {
-  return (
-    <Container/>
-  );
+  // initializes the state to be logged out
+  const [state, setState] = React.useState(() => {
+    const initialState = logout();
+    return initialState;
+  });
+
+  // automatically resets the current user
+  const currentUser = useAuth()
+
+
+  if (currentUser){
+    console.log(currentUser.email)
+    return(
+      <Container/>
+    )
+  } else {
+    return(
+      <Login/>
+    )
+  }
+
 };
 
 const styles = StyleSheet.create({
