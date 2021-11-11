@@ -9,7 +9,6 @@ export default function Login({ navigation }) {
     const [password, setPassword] = React.useState('')
 
     async function handleSignUp() {
-        this.props.login_handler
         try {
             await signUp(email, password)
             //TODO add code to switch tabs
