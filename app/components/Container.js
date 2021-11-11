@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+//import {Ionicons} from 'react-native-vector-icons/Ionicons';
+import {Ionicons} from '@expo/vector-icons';
+import { useAuth } from '../firebaseApp';
 
 import { View, Button, Text } from 'react-native';
 
@@ -10,6 +12,7 @@ import HomeTab from './HomeTab'
 import SavedRecipesTab from './SavedRecipesTab'
 import SearchTab from './SearchTab'
 import UserGuideTab from './UserGuideTab';
+import Login from './Login';
 
 //Screen names
 const homeName = 'Home'
@@ -21,6 +24,7 @@ const Tab = createBottomTabNavigator();
 
 
 const Container = () => {
+
     return (
         <NavigationContainer>
             <Tab.Navigator
