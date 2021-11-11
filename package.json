@@ -30,17 +30,23 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@babel/core": "^7.16.0",
-=======
-    "@babel/core": "^7.9.0",
->>>>>>> e4111ff522fc6e1998896b140d31b6103fd33294
+    "@testing-library/react": "^12.1.2",
+    "jest-dom": "^4.0.0",
     "react-test-renderer": "^17.0.2"
   },
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
     ]
   },
   "private": true

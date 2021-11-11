@@ -1,5 +1,6 @@
 import React from "react";
 import renderer from 'react-test-renderer';
+import { ReactDOM } from "react";
 import Container from /../components/Container.js;
 
 it('renders correctly', () => {
