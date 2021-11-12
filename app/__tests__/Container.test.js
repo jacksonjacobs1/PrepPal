@@ -1,8 +1,9 @@
 import React from "react";
 import renderer from 'react-test-renderer';
 import { cleanup, render, fireEvent } from '@testing-library/react-native';
-import { ReactDOM } from "react";
 import Container from '../components/Container.js';
+
+afterEach(cleanup);
 
 describe('Container', () => {
   it('renders correctly', () => {
@@ -44,6 +45,18 @@ describe('Container', () => {
     fireEvent.press(button);
     const foundButton = getByTestId('book');
     expect(foundButton).toBeTruthy();
+  });
+
+  it('displays the home tab after pressing the home button', () => {
+    const { getByTestId } = render(<Container />);
+    const otherButton = getByTestId('book-outline');
+    fireEvent.press(otherButton);
+    
+    const homeButton = getByTestId('home-outline');
+    fireEvent.press(homeButton);
+    
+    const foundHomeTab = getByTestId('homeTab');
+    expect(foundHomeTab).toBeTruthy();
   });
 });
 

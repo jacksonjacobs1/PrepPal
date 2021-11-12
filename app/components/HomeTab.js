@@ -7,7 +7,7 @@ export default function HomeTab({navigation}){
     const recipe2 = "eggs benedict";
     const recipe3 = "chocolate chip cookies";
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='homeTab'>
             <Text style={styles.title1}>Hello {name}, Welcome to PrepPal! </Text>
             <Text style={styles.title2}>Recent Recipes:{"\n"}{recipe1}{"\n"}{recipe2}{"\n"}{recipe3} </Text>
             <Button style={styles.submitButton}

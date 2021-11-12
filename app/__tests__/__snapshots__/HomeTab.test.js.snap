@@ -10,6 +10,7 @@ exports[`renders correctly 1`] = `
       "justifyContent": "flex-start",
     }
   }
+  testID="homeTab"
 >
   <Text
     style={
