@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636759871631" clover="3.2.0">
-  <project timestamp="1636759871632" name="All files">
+<coverage generated="1636760510776" clover="3.2.0">
+  <project timestamp="1636760510776" name="All files">
     <metrics statements="81" coveredstatements="36" conditionals="18" coveredconditionals="15" methods="28" coveredmethods="7" elements="127" coveredelements="58" complexity="0" loc="81" ncloc="81" packages="3" files="11" classes="11"/>
     <package name="PrepPal">
       <metrics statements="25" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
@@ -82,13 +82,13 @@
       </file>
       <file name="HomeTab.js" path="C:\Users\audre\OneDrive\College\Fall_2021\CSDS393\PrepPal\app\components\HomeTab.js">
         <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="5" count="10" type="stmt"/>
-        <line num="6" count="10" type="stmt"/>
-        <line num="7" count="10" type="stmt"/>
-        <line num="8" count="10" type="stmt"/>
-        <line num="9" count="10" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="7" count="9" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="9" count="9" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
       <file name="Login.js" path="C:\Users\audre\OneDrive\College\Fall_2021\CSDS393\PrepPal\app\components\Login.js">
         <metrics statements="12" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>

@@ -97,7 +97,7 @@ exports[`renders correctly 1`] = `
                 "minHeight": 40,
               }
             }
-            testID="searchInput"
+            testID="savedSearch"
             underlineColorAndroid="transparent"
             value=""
           >
