@@ -4,7 +4,7 @@ import {SearchBar} from 'react-native-elements';
 
 function SavedRecipesTab(props) {
     return (
-        <ScrollView>
+        <ScrollView testID='savedRecipesTab'>
             <SearchBar placeholder="Search recipes"> </SearchBar>
             <Text style={styles.savedRecipesTitle}> Your saved recipes: </Text>
             <Text>

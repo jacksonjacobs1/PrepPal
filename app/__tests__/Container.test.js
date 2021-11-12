@@ -58,5 +58,23 @@ describe('Container', () => {
     const foundHomeTab = getByTestId('homeTab');
     expect(foundHomeTab).toBeTruthy();
   });
+
+  it('displays the saved recipes tab after pressing the saved recipes button', () => {
+    const { getByTestId } = render(<Container />);
+    fireEvent.press(getByTestId('list-outline'));
+    expect(getByTestId('savedRecipesTab')).toBeTruthy();
+  });
+
+  it('displays the search tab after pressing the search button', () => {
+    const { getByTestId } = render(<Container />);
+    fireEvent.press(getByTestId('search-outline'));
+    expect(getByTestId('searchTab')).toBeTruthy();
+  });
+
+  it('displays the user guide tab after pressing the user guide button', () => {
+    const { getByTestId } = render(<Container />);
+    fireEvent.press(getByTestId('book-outline'));
+    expect(getByTestId('userGuideTab')).toBeTruthy();
+  });
 });
 

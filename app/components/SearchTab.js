@@ -8,7 +8,7 @@ const dietaryRestrictionOptions = ["Yes", "No"]
 
 function SearchTab() {
   return (
-    <View>
+    <View testID='searchTab'>
       <Text>This is the page that will allow the user to search for new recipes online. </Text>
       <Text> </Text>
       <Text>Enter available ingredients:</Text>

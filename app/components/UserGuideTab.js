@@ -3,7 +3,7 @@ import { ScrollView, Text } from 'react-native';
 
 function UserGuideTab() {
   return (
-    <ScrollView>
+    <ScrollView testID='userGuideTab'>
       <Text>PrepPal User Guide</Text>
       <Text> </Text>
       <Text>
