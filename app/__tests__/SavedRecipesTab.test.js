@@ -10,7 +10,7 @@ describe('SavedRecipesTab', () => {
   });
 
   it('displays a search bar', () => {
-    const { getByTestId } = render(<HomeTab />);
+    const { getByTestId } = render(<SavedRecipesTab />);
     expect(getByTestId('savedSearch')).toBeTruthy();
   });
 });

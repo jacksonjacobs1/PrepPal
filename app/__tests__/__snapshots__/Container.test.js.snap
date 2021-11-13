@@ -136,6 +136,7 @@ exports[`Container renders correctly 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="seeAllButton"
             >
               <View
                 style={

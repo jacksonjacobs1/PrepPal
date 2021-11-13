@@ -11,9 +11,10 @@ export default function HomeTab({navigation}){
             <Text style={styles.title1}>Hello {name}, Welcome to PrepPal! </Text>
             <Text style={styles.title2}>Recent Recipes:{"\n"}{recipe1}{"\n"}{recipe2}{"\n"}{recipe3} </Text>
             <Button style={styles.submitButton}
-            title="See All Saved Recipes"
-            color ="#E5101C"
-            onPress={() => navigation.navigate('Saved Recipes')}
+              title="See All Saved Recipes"
+              color ="#E5101C"
+              onPress={() => navigation.navigate('Saved Recipes')}
+              testID='seeAllButton'
             />
         </View>
     )
