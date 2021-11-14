@@ -21,34 +21,34 @@ export default function HomeTab({navigation}){
 }
 
 const styles = StyleSheet.create({
-    title1: {
-        marginTop: 0,
-        paddingVertical: 10,
-        borderWidth: 3,
-        borderColor: "#20232a",
-        color: "black",
-        backgroundColor: "yellow",
-        fontSize: 30,
-        fontWeight: "bold",
-        borderRadius: 6,
-        textAlign: "center"
-    },
-    title2:{
-        marginTop: 0,
-        paddingVertical: 6,
-        borderWidth: 3,
-        borderColor: "#20232a",
-        color: "red",
-        backgroundColor: "blue",
-        fontSize: 30,
-        fontWeight: "bold",
-        borderRadius: 6,
-        textAlign: "center"
-    },
-    container: {
-      flex: 1,
-      backgroundColor: '#0CC3F9',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-    },
+  title1: {
+    marginTop: 0,
+    paddingVertical: 10,
+    borderWidth: 3,
+    borderColor: "#20232a",
+    color: "black",
+    backgroundColor: "yellow",
+    fontSize: 30,
+    fontWeight: "bold",
+    borderRadius: 6,
+    textAlign: "center"
+  },
+  title2:{
+    marginTop: 0,
+    paddingVertical: 6,
+    borderWidth: 3,
+    borderColor: "#20232a",
+    color: "red",
+    backgroundColor: "blue",
+    fontSize: 30,
+    fontWeight: "bold",
+    borderRadius: 6,
+    textAlign: "center"
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#0CC3F9',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
 });
