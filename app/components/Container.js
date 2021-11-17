@@ -12,6 +12,7 @@ import HomeTab from './HomeTab'
 import SavedRecipesTab from './SavedRecipesTab'
 import SearchTab from './SearchTab'
 import UserGuideTab from './UserGuideTab';
+import ProfileTab from './ProfileTab';
 import Login from './Login';
 
 //Screen names
@@ -19,6 +20,7 @@ const homeName = 'Home'
 const savedRecipesName = 'Saved Recipes'
 const searchTabName = 'Find New Recipe'
 const userGuideName = 'User Guide'
+const profileName = 'Profile'
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +48,8 @@ const Container = () => {
                         } else if (rn === userGuideName) {
                             iconName = focused ? 'book' : 'book-outline';
 
+                        } else if (rn == profileName) {
+                          iconName = focused ? 'person' : 'person-outline';
                         }
 
                         // You can return any component that you like here!
@@ -58,6 +62,7 @@ const Container = () => {
                 <Tab.Screen name={savedRecipesName} component={SavedRecipesTab} />
                 <Tab.Screen name={searchTabName} component={SearchTab} />
                 <Tab.Screen name={userGuideName} component={UserGuideTab} />
+                <Tab.Screen name={profileName} component={ProfileTab} />
 
             </Tab.Navigator>
         </NavigationContainer>
