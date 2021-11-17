@@ -11,7 +11,6 @@ export default function Login({ navigation }) {
     async function handleSignUp() {
         try {
             await signUp(email, password)
-            //TODO add code to switch tabs
         } catch (error) {
             console.log(error.toString())
         }
@@ -20,7 +19,6 @@ export default function Login({ navigation }) {
     async function handleSignIn() {
         try {
             await signIn(email, password)
-            //TODO add code to switch tabs
         } catch (error) {
             console.log(error.toString())
         }

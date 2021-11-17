@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, collection, getDocs, query, where} from 'firebase/firestore';
 import { useState, useEffect } from "react";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -29,11 +29,32 @@ function signIn(email, password){
 }
 
 function signUp(email, password){
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password).then(cred => {
+      setDoc(doc(db, 'users', cred.user.uid), 
+      {
+        email: email,
+        password: password
+      })
+    });
 }
 
 function logout(){
   return signOut(auth)
+}
+
+async function getUserRecipes(user){
+  output = []
+
+  const q = query(collection(db, 'recipes'), where('uid', '==', user.uid));
+
+  const querySnapshot = await getDocs(q); // might need await here
+  console.log('datasize = ' + querySnapshot.size)
+  querySnapshot.forEach((doc) => {
+    output.push(doc.data());
+  })
+
+  console.log(output[0])
+  return output;
 }
 
 function useAuth() {
@@ -44,7 +65,8 @@ function useAuth() {
     return unsub;
   }, [])
 
+
   return currentUser;
 }
 
-export {firebaseApp, auth, onAuthStateChanged, db, signUp, signIn, useAuth, logout};
+export {firebaseApp, auth, onAuthStateChanged, db, signUp, signIn, useAuth, logout, getUserRecipes};
