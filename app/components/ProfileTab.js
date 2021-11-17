@@ -4,7 +4,7 @@ import { Button, Dialog, Headline, IconButton, Portal, Provider, Subheading, Tex
 
 export default function ProfileTab({ navigation }) {
   // replace default states with firebase data later
-  const [username, setUsername] = React.useState('Richard');
+  const [username, setUsername] = React.useState('Richard Zhu');
   const [userEmail, setUserEmail] = React.useState('richardzhu@example.edu');
   const [userRestr, setUserRestr] = React.useState([]);
   
@@ -56,7 +56,7 @@ export default function ProfileTab({ navigation }) {
 
 const styles = StyleSheet.create({
   title: {
-    paddingHorizontal: 15,
+    paddingLeft: 15,
     paddingTop: 40,
     fontSize: 40
   },

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function HomeTab({navigation}){
-  const name = "Richard";
+  const name = "Richard Zhu";
   const recipe1 = "chicken flambae";
   const recipe2 = "eggs benedict";
   const recipe3 = "chocolate chip cookies";
