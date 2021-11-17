@@ -32,8 +32,13 @@ function SearchTab() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <Text> </Text>
       <Text>This is the page that will allow the user to search for new recipes online. </Text>
+      <Text> </Text>
+      <Text> Enter any general search queries (e.g. "pasta dishes") here: </Text>
+      <Text> </Text>
+      <Text> [CREATE A TEXT ENTRY SECTION HERE] </Text>
       <Text> </Text>
       <Text> Enter available ingredients: </Text>
       <FlatList
@@ -85,8 +90,13 @@ function SearchTab() {
       <Text>
         {selectedItem2}
       </Text>
-    </View>
-    
+    <Button
+      title="Click here to search!"
+      color ='#2f4f4f'
+    />
+    <Text> </Text>
+    <Text> </Text>
+    </ScrollView>
   );
 }
 
