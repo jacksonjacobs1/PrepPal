@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Button, IconButton, View } from 'react-native';
-import { Dialog, Headline, Portal, Provider, StyleSheet, Subheading, TextInput, Title } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { Button, Dialog, Headline, IconButton, Portal, Provider, Subheading, TextInput, Title } from 'react-native-paper';
 
-export default function ProfileTab({ name, restrictions, email }) {
-  const [username, setUsername] = React.useState(name);
-  const [userEmail, setUserEmail] = React.useState(email);
-  const [userRestr, setUserRestr] = React.useState(restrictions);
+export default function ProfileTab({ navigation }) {
+  // replace default states with firebase data later
+  const [username, setUsername] = React.useState('Richard');
+  const [userEmail, setUserEmail] = React.useState('richardzhu@example.edu');
+  const [userRestr, setUserRestr] = React.useState([]);
   
   const [visible, setVisible] = React.useState(false);
 
@@ -14,32 +15,32 @@ export default function ProfileTab({ name, restrictions, email }) {
   const hideDialog = () => setVisible(false);
 
   return (
-    <Provider>
+    <Provider>        
       <View style={styles.line}>
-        <Headline>Profile</Headline>
+        <Headline style={styles.title}>{username}</Headline>
         <IconButton icon='pencil' onPress={showDialog} />
       </View>
       <Portal>
         <Dialog visible={visible} onDismiss={hideDialog}>
           <Dialog.Title>Edit</Dialog.Title>
           <Dialog.Content>
-            <TextInput 
+            <TextInput style={styles.textInput}
               mode='outlined' 
               label='Name' 
               value={username}
               onChangeText={text => setUsername(text)}
             />
-            <TextInput 
+            <TextInput style={styles.textInput}
               mode='outlined' 
               label='Email' 
               value={userEmail}
               onChangeText={text => setUserEmail(text)}
             />
-            <TextInput 
+            <TextInput style={styles.textInput}
               mode='outlined' 
               label='Dietary Restrictions' 
-              value={userRestr}
-              onChangeText={text => setUserRestr(text)}
+              value={userRestr.toString()}
+              onChangeText={text => setUserRestr(text.split(', '))}
             />
           </Dialog.Content>
           <Dialog.Actions>
@@ -47,16 +48,28 @@ export default function ProfileTab({ name, restrictions, email }) {
           </Dialog.Actions>
         </Dialog>
       </Portal>
-      <Title>{username}</Title>
-      <Subheading>Email: {userEmail}</Subheading>
-      <Subheading>Dietary restrictions: {userRestr}</Subheading>
+      <Subheading style={styles.text}>Email: {userEmail}</Subheading>
+      <Subheading style={styles.text}>Dietary restrictions: {userRestr.toString()}</Subheading>
     </Provider>
   );
 };
 
 const styles = StyleSheet.create({
+  title: {
+    paddingHorizontal: 15,
+    paddingTop: 40,
+    fontSize: 40
+  },
+  text: {
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    fontSize: 20
+  },
   line: {
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  textInput: {
+    paddingVertical: 10
   }
 });
