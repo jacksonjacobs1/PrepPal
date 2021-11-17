@@ -34,7 +34,7 @@ function SearchTab() {
       />
       <Text> </Text>
       <Text>
-        The above two dropdown menus currently read as follows:
+        The above two dropdown menus currently read as follows: 
       </Text>
       <Text> </Text>
       <Text>
