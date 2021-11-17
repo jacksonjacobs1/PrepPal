@@ -1,41 +1,46 @@
-import React from 'react';
-import {StyleSheet, ScrollView, Text } from 'react-native';
-import {SearchBar} from 'react-native-elements';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, ScrollView, Text, View, FlatList, SafeAreaView } from 'react-native';
+import { SearchBar } from 'react-native-elements';
+import { List } from 'react-native-paper';
+import { getUserRecipes } from '../firebaseApp';
+import { getAuth } from '@firebase/auth';
 
 function SavedRecipesTab(props) {
-    const [searchText, setSearchText] = React.useState('')
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const [data, setData] = useState([])
+    const [searchText, setSearchText] = useState('')
+
+    useEffect(() => {
+        getUserRecipes(user).then(response => { setData(response) })
+    }, [])
+
+    if (!data.length) return (<Text>Loading...</Text>);
+
     return (
-        <ScrollView>
+        <View>
             <SearchBar
                 placeholder="Search recipes"
                 onChangeText={searchText => setSearchText(searchText)}
                 value={searchText}
             />
-            <Text style={styles.savedRecipesTitle}> Your saved recipes: </Text>
-            <Text>
-                {'\u2B24'} Recipe 1
-            </Text>
-            <Text>
-                {'\u2B24'} Recipe 2
-            </Text>
-            <Text>
-                {'\u2B24'} Recipe 3
-            </Text>
-            <Text>
-                {'\u2B24'} Recipe 4
-            </Text>
-            <Text>
-                {'\u2B24'} Recipe 5
-            </Text>
-            <Text> </Text>
-            <Text>
-                The text currently in the search bar is displayed below:
-            </Text>
-            <Text> </Text>
-            <Text>
-                {searchText}
-            </Text>
+            <ScrollView>
+            <List.AccordionGroup>
+                {
+                    data.map(item => (
+                        <List.Accordion key={item.uid} title={item.name} id={item.uid}>
+                            <View>
+                                <List.Item title='Ingredients' description={item.ingredients}  />
+                                <List.Item title='Instructions' description={item.instructions} />
+                            </View>
+                        </List.Accordion>
+                    ))
+                }
+            </List.AccordionGroup>
         </ScrollView>
+        </View>
+        
+
     );
 }
 
