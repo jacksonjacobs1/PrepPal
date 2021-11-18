@@ -1,53 +1,67 @@
-import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useState } from 'react';
+import { Button, DefaultTheme} from 'react-native-paper';
+import { StyleSheet, Text, View, List } from 'react-native';
 
-export default function HomeTab({navigation}){
-  const name = "Richard Zhu";
-  const recipe1 = "chicken flambae";
-  const recipe2 = "eggs benedict";
-  const recipe3 = "chocolate chip cookies";
+export default function HomeTab() {
+  const name = "Richard"
+  const [recipe, setFood] = useState([
+      {recipe: 'Recipe 1', key: '1'},
+      {recipe: 'Recipe 2', key: '2'},
+      {recipe: 'Recipe 3', key: '3'},
+      {recipe: 'Recipe 4', key: '4'},
+      {recipe: 'Recipe 5', key: '5'}
+    ]);
   return (
     <View style={styles.container}>
-      <Text style={styles.title1}>Hello {name}, Welcome to PrepPal! </Text>
-      <Text style={styles.title2}>Recent Recipes:{"\n"}{recipe1}{"\n"}{recipe2}{"\n"}{recipe3} </Text>
-      <Button style={styles.submitButton}
-        title="See All Saved Recipes"
-        color ="#E5101C"
-        onPress={() => navigation.navigate('Saved Recipes')}
-      />
+    <Text style={styles.text1} > Hello {name}, Welcome to PrepPal! </Text>
+    <Text style={styles.listItem}>Recent Recipes:</Text>
+    { recipe.map((item) => {
+      return(
+        <View key = {item.key}>
+        <Text style={styles.listItem}>{item.recipe}</Text>
+        </View>
+      )
+    })}
+    <Button mode="contained" theme={DefaultTheme} testID="WORK" style={styles.button} onPress={() => navigation.navigate('Saved Recipes')}>
+      See All Saved Recipes
+    </Button>
     </View>
-  )
+  );
 }
 
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 3,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'white',
+  },
+};
+
 const styles = StyleSheet.create({
-  title1: {
-    marginTop: 0,
-    paddingVertical: 10,
-    borderWidth: 3,
-    borderColor: "#20232a",
-    color: "black",
-    backgroundColor: "yellow",
-    fontSize: 30,
-    fontWeight: "bold",
-    borderRadius: 6,
-    textAlign: "center"
-  },
-  title2:{
-    marginTop: 0,
-    paddingVertical: 6,
-    borderWidth: 3,
-    borderColor: "#20232a",
-    color: "red",
-    backgroundColor: "blue",
-    fontSize: 30,
-    fontWeight: "bold",
-    borderRadius: 6,
-    textAlign: "center"
-  },
   container: {
-    flex: 1,
-    backgroundColor: '#0CC3F9',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    marginTop: 0,
+    flex: 1
   },
+  text1: {
+    color: '#6200ee',
+    fontWeight: 'bold',
+    fontSize: 30,
+    borderWidth: 1,
+    textAlign: 'center',
+    backgroundColor:'white',
+    fontWeight:'bold'
+  },
+  listItem:{
+    marginTop:5,
+    padding:20,
+    backgroundColor: '#f6f6f6',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  button:{
+    marginTop:260,
+    justifyContent:'flex-start',
+  }
 });

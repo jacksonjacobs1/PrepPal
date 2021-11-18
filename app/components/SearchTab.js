@@ -10,7 +10,7 @@ function SearchTab() {
   const [selectedItem1, setMenuText1] = React.useState('')
   const [selectedItem2, setMenuText2] = React.useState('')
   return (
-    <ScrollView>
+    <ScrollView testID='searchTab'>
       <Text>This is the page that will allow the user to search for new recipes online. </Text>
       <Text> </Text>
       <Text>Enter available ingredients:</Text>

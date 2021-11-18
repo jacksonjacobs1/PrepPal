@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`HomeTab renders correctly 1`] = `
 <View
   style={
     Object {
@@ -10,6 +10,7 @@ exports[`renders correctly 1`] = `
       "justifyContent": "flex-start",
     }
   }
+  testID="homeTab"
 >
   <Text
     style={
@@ -76,6 +77,7 @@ exports[`renders correctly 1`] = `
         "opacity": 1,
       }
     }
+    testID="seeAllButton"
   >
     <View
       style={

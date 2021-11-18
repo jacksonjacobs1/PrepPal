@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`Container renders correctly 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
@@ -69,6 +69,7 @@ exports[`renders correctly 1`] = `
                 "justifyContent": "flex-start",
               }
             }
+            testID="homeTab"
           >
             <Text
               style={
@@ -135,6 +136,7 @@ exports[`renders correctly 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="seeAllButton"
             >
               <View
                 style={
