@@ -18,7 +18,7 @@ import Login from './Login';
 //Screen names
 const homeName = 'Home'
 const savedRecipesName = 'Saved Recipes'
-const searchTabName = 'Find New Recipe'
+const searchTabName = 'New Recipe'
 const userGuideName = 'User Guide'
 const profileName = 'Profile'
 

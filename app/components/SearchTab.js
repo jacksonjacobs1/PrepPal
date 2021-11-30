@@ -9,6 +9,7 @@ const matchOptions = ["Low", "Medium", "High", "Total"]
 const dietaryRestrictionOptions = ["Yes", "No"]
 
 function SearchTab() {
+  const [generalQueryText, setGeneralQueryText] = React.useState('')
   const [selectedItem1, setMenuText1] = React.useState('')
   const [selectedItem2, setMenuText2] = React.useState('')
   const [barNum, setBarNum] = React.useState(3)
@@ -31,15 +32,35 @@ function SearchTab() {
     setBarNum(barNum - 1);
   }
 
+  const createDataForIngredientSearch = () => {
+    var ingredientList = [];
+    var i;
+    for(i = 0; i < displayedList.length; i++) {
+      ingredientList.push(displayedList[i]);
+    }
+    var searchData = {
+      "generalQueryText": generalQueryText,
+      "matchExistingIngredientsDegree": selectedItem1,
+      "accountForDietaryRestrictions": selectedItem2,
+      "listOfIngredients": ingredientList,
+    };
+  }
+
   return (
     <ScrollView testID='searchTab'>
       <Text>This is the page that will allow the user to search for new recipes online. </Text>
       <Text> </Text>
       <Text> Enter any general search queries (e.g. "pasta dishes") here: </Text>
       <Text> </Text>
-      <Text> [CREATE A TEXT ENTRY SECTION HERE] </Text>
+      <SafeAreaView>
+        <TextInput
+          style={styles.generalQueryBarStyle}
+          onChangeText={generalQueryText => setGeneralQueryText(generalQueryText)}
+        />
+      </SafeAreaView>
       <Text> </Text>
-      <Text> Enter available ingredients: </Text>
+      <Text> Enter the ingredients you have available: </Text>
+      <Text> </Text>
       <FlatList
         style = {styles.ingredientAreaStyle}
         data={displayedList}
@@ -77,10 +98,17 @@ function SearchTab() {
         data={dietaryRestrictionOptions}
         onSelect={(selectedItem2, index2) => setMenuText2(selectedItem2)}
       />
+      {/*
+      The following code demonstrates how text from the top input bar and dropdown menus appears as
+      variables.
+      <Text> </Text>
+      <Text> The general query currently reads as follows: </Text>
       <Text> </Text>
       <Text>
-        The above two dropdown menus currently read as follows: 
+        {generalQueryText}
       </Text>
+      <Text> </Text>
+      <Text> The above two dropdown menus currently read as follows: </Text>
       <Text> </Text>
       <Text>
         {selectedItem1}
@@ -88,10 +116,13 @@ function SearchTab() {
       <Text> </Text>
       <Text>
         {selectedItem2}
-      </Text>
+      </Text> */}
     <Button
       title="Click here to search!"
       color ='#2f4f4f'
+      onPress = {() =>
+        createDataForIngredientSearch()
+      }
     />
     <Text> </Text>
     <Text> </Text>
@@ -100,6 +131,12 @@ function SearchTab() {
 }
 
 const styles = StyleSheet.create({
+  generalQueryBarStyle: {
+    height: 20,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
   ingredientEntryBarStyle: {
     height: 20,
     width: 150,
