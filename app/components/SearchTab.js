@@ -33,17 +33,17 @@ function SearchTab() {
   }
 
   const createDataForIngredientSearch = () => {
-    var searchData = [
-      {"generalQueryText": generalQueryText},
-      {"matchExistingIngredientsDegree": selectedItem1},
-      {"accountForDietaryRestrictions": selectedItem2}
-    ];
-    var i;
     var ingredientList = [];
+    var i;
     for(i = 0; i < displayedList.length; i++) {
       ingredientList.push(displayedList[i]);
     }
-    searchData.push(ingredientList);
+    var searchData = {
+      "generalQueryText": generalQueryText,
+      "matchExistingIngredientsDegree": selectedItem1,
+      "accountForDietaryRestrictions": selectedItem2,
+      "listOfIngredients": ingredientList,
+    };
   }
 
   return (
