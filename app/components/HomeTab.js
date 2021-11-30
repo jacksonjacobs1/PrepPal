@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, DefaultTheme} from 'react-native-paper';
 import { StyleSheet, Text, View, List } from 'react-native';
 
-export default function HomeTab() {
+export default function HomeTab({ navigation }) {
   const name = "Richard"
   const [recipe, setFood] = useState([
       {recipe: 'Recipe 1', key: '1'},
