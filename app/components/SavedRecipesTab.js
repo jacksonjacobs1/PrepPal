@@ -5,7 +5,7 @@ import { List } from 'react-native-paper';
 import { getUserRecipes } from '../firebaseApp';
 import { getAuth } from '@firebase/auth';
 
-function SavedRecipesTab(props) {
+function SavedRecipesTab({ navigation }) {
     const auth = getAuth();
     const user = auth.currentUser;
     const [data, setData] = useState([])

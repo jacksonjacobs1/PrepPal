@@ -8,7 +8,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 const matchOptions = ["Low", "Medium", "High", "Total"]
 const dietaryRestrictionOptions = ["Yes", "No"]
 
-function SearchTab() {
+function SearchTab({ navigation }) {
   const [selectedItem1, setMenuText1] = React.useState('')
   const [selectedItem2, setMenuText2] = React.useState('')
   const [barNum, setBarNum] = React.useState(3)
