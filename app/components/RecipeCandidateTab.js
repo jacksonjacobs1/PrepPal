@@ -1,38 +1,31 @@
 import React from "react";
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, Button } from 'react-native';
 
 function RecipeCandidateTab() {
+  const [instructions, setInstructions] = React.useState('');
+  const [ingredients, setIngredients] = React.useState('');
   return (
     <ScrollView>
-      <Text>PrepPal User Guide</Text>
-      <Text> </Text>
       <Text>
-        Welcome to PrepPal! If you're looking for the perfect recipe for the ingredients you already have, then this app may be just what you need!
+        A recipe we found is displayed below. Do you wish to save this recipe,
+        or keep searching?
       </Text>
       <Text> </Text>
-      <Text>
-        To search for a new recipe,
-        click the "New Recipe" button on the taskbar and then fill out the search items to let the program know what ingredients you have on hand. We will then look for recipes online and give you the option to
-        save them. You can also click "Saved Recipes" on the taskbar to look at the recipes you already have stored, or click "Profile" to update your settings or switch to a
-        different user.
-      </Text>
+      <Text> Recipe Ingredients: </Text>
       <Text> </Text>
-      <Text>
-        Credits:
-      </Text>
+      <Text> {ingredients} </Text>
       <Text> </Text>
-      <Text>
-        Jackson Jacobs
-      </Text>
-      <Text>
-        Harrison Rhodes
-      </Text>
-      <Text>
-        Desmond Weisenberg
-      </Text>
-      <Text>
-        Audrey Zhu
-      </Text>
+      <Text> Recipe Instructions: </Text>
+      <Text> </Text>
+      <Text> {instructions} </Text>
+      <Button
+        title="Save recipe."
+        color ='#2f4f4f'
+      />
+      <Button
+        title="Keep searching."
+        color ='#2f4f4f'
+      />
     </ScrollView>
   )
 };
