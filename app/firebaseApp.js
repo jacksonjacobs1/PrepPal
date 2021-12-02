@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
-import { getFirestore, doc, setDoc, collection, getDocs, query, where} from 'firebase/firestore';
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { getFirestore, doc, setDoc, collection, getDocs, query, where, orderBy, limit } from 'firebase/firestore';
 import { useState, useEffect } from "react";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -24,25 +24,25 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp)
 
-function signIn(email, password){
-    return signInWithEmailAndPassword(auth, email, password);
+function signIn(email, password) {
+  return signInWithEmailAndPassword(auth, email, password);
 }
 
-function signUp(email, password){
-    return createUserWithEmailAndPassword(auth, email, password).then(cred => {
-      setDoc(doc(db, 'users', cred.user.uid), 
+function signUp(email, password) {
+  return createUserWithEmailAndPassword(auth, email, password).then(cred => {
+    setDoc(doc(db, 'users', cred.user.uid),
       {
         email: email,
         password: password
       })
-    });
+  });
 }
 
-function logout(){
+function logout() {
   return signOut(auth)
 }
 
-async function getUserRecipes(user){
+async function getUserRecipes(user) {
   var output = []
 
   const q = query(collection(db, 'recipes'), where('uid', '==', user.uid));
@@ -59,7 +59,7 @@ async function getUserRecipes(user){
 }
 
 function useAuth() {
-  const [ currentUser, setCurrentUser ] = useState();
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
@@ -70,4 +70,19 @@ function useAuth() {
   return currentUser;
 }
 
-export {firebaseApp, auth, onAuthStateChanged, db, signUp, signIn, useAuth, logout, getUserRecipes};
+async function sortByDate(user) {
+  var output = []
+
+  const q = query(collection(db, 'recipes'), where('uid', '==', user.uid), orderBy("timestamp", "desc"), limit(3));
+
+  const querySnapshot = await getDocs(q); // might need await here
+  console.log('datasize = ' + querySnapshot.size)
+  querySnapshot.forEach((doc) => {
+    output.push(doc.data());
+  })
+
+  console.log(output[0])
+  return output;
+}
+
+export { firebaseApp, auth, onAuthStateChanged, db, signUp, signIn, useAuth, logout, getUserRecipes, sortByDate };
