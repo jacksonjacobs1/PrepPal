@@ -1,11 +1,14 @@
+import { getAuth } from '@firebase/auth';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Dialog, Headline, IconButton, Portal, Provider, Subheading, TextInput, Title } from 'react-native-paper';
 
 export default function ProfileTab({ navigation }) {
+  const auth = getAuth();
+  const user = auth.currentUser;
   // replace default states with firebase data later
-  const [username, setUsername] = React.useState('Richard Zhu');
-  const [userEmail, setUserEmail] = React.useState('richardzhu@example.edu');
+  const [username, setUsername] = React.useState('Harrison');
+  const [userEmail, setUserEmail] = React.useState(user.email);
   const [userRestr, setUserRestr] = React.useState([]);
   
   const [visible, setVisible] = React.useState(false);

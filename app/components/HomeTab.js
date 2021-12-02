@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { getAuth } from '@firebase/auth';
 import { Button, DefaultTheme} from 'react-native-paper';
 import { StyleSheet, Text, View, List } from 'react-native';
 
 export default function HomeTab({ navigation }) {
-  const name = "Richard"
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const name = user.email
   const [recipe, setFood] = useState([
       {recipe: 'Recipe 1', key: '1'},
       {recipe: 'Recipe 2', key: '2'},
@@ -61,7 +65,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button:{
-    marginTop:260,
+    marginTop:65,
     justifyContent:'flex-start',
   }
 });
