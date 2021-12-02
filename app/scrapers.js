@@ -136,7 +136,9 @@ async function scanURLs(data, ingredient_query) {     // data is the dictionary 
                     for (let k = 0; k < measurements.length; k++) {
                         if (list_item.indexOf(measurements[k]) != -1 && indexOfIngreds == -1) {
                             indexOfIngreds = i;
-                            break;
+                            if (list_item.length > 300){
+                                return null;
+                            }
                         }
                     }
                 }
@@ -148,7 +150,9 @@ async function scanURLs(data, ingredient_query) {     // data is the dictionary 
                     for (let k = 0; k < cookingTerms.length; k++) {
                         if (list_item.indexOf(cookingTerms[k]) != -1 && indexOfInstruc == -1) {
                             indexOfInstruc = i;
-                            break;
+                            if (list_item.length > 600){
+                                return null;
+                            }
                         }
                     }
                 }
@@ -162,6 +166,10 @@ async function scanURLs(data, ingredient_query) {     // data is the dictionary 
 
             ingredientsList = formattedUls[indexOfIngreds];
             instructionsList = formattedUls[indexOfInstruc];
+
+            if (ingredientsList.length > 20 || instructionsList.length > 15){
+                return null;
+            }
 
             return { ingredientsList, instructionsList }
 
@@ -181,7 +189,6 @@ async function scanURLs(data, ingredient_query) {     // data is the dictionary 
     await cluster.idle()
     await cluster.close()
 }
-
 
 
 main()
