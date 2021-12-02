@@ -43,7 +43,7 @@ function logout(){
 }
 
 async function getUserRecipes(user){
-  output = []
+  var output = []
 
   const q = query(collection(db, 'recipes'), where('uid', '==', user.uid));
 
@@ -53,7 +53,8 @@ async function getUserRecipes(user){
     output.push(doc.data());
   })
 
-  console.log(output[0])
+  console.log(output)
+
   return output;
 }
 
