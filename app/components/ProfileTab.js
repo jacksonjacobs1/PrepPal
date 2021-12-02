@@ -1,10 +1,14 @@
+import { getAuth } from '@firebase/auth';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Dialog, Headline, IconButton, Portal, Provider, Subheading, TextInput, Title } from 'react-native-paper';
 import { getAuth } from 'firebase/auth';
 
 export default function ProfileTab({ navigation }) {
+  const auth = getAuth();
+  const user = auth.currentUser;
   // replace default states with firebase data later
+
   const auth = getAuth();
   const user = auth.currentUser;
   const [username, setUsername] = React.useState(user.nickname);

@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
+
   button: {
     marginTop: 65,
     justifyContent: 'flex-start',
