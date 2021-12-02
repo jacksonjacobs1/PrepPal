@@ -53,7 +53,8 @@ async function getUserRecipes(user){
     output.push(doc.data());
   })
 
-  console.log(output[0])
+  console.log(output)
+
   return output;
 }
 
