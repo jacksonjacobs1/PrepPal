@@ -20,60 +20,59 @@ function SavedRecipesTab({ navigation }) {
   console.log(data.ingredients)
 
   return (
-    <View>
+    <ScrollView>
       <SearchBar
         placeholder="Search recipes"
         onChangeText={searchText => setSearchText(searchText)}
         value={searchText}
       />
-      <ScrollView>
-        <List.AccordionGroup>
-          {
-            data.map(item => (
-              <List.Accordion key={item.uid} title={item.name} id={item.uid}>
-                <View>
-                  <List.Section title='INGREDIENTS'>
-                    {item.ingredients.map((ingredient) => (
-                      <List.Item 
-                        key={ingredient} 
-                        title={ingredient} 
-                        left={props => <List.Icon {...props} icon="circle-small" />}
-                        style={styles.ingredient}
-                      />
-                    ))}
-                  </List.Section>
-                  <List.Section title='INSTRUCTIONS'>
-                    <List.Item title={item.instructions} />
-                  </List.Section>
-                  {/* <List.Item title='Ingredients' description={item.ingredients} />
-                  <List.Item title='Instructions' description={item.instructions} /> */}
-                </View>
-              </List.Accordion>
-            ))
-          }
-        </List.AccordionGroup>
-      </ScrollView>
-    </View>
+      <List.AccordionGroup>
+        {
+          data.map(item => (
+            <List.Accordion key={item.name} title={item.name} id={item.timestamp}>
+              <List.Section title='INGREDIENTS'>
+                {item.ingredients.map((ingredient) => (
+                  <List.Item
+                    key={ingredient}
+                    title={ingredient}
+                    left={props => <List.Icon {...props} icon="circle-small" style={styles.ingredient} />}
+                    style={styles.ingredient}
+                  />
+                ))}
+              </List.Section>
+              <List.Section title='INSTRUCTIONS'>
+                <List.Item title={item.instructions} style={styles.instructions} titleNumberOfLines={100} />
+              </List.Section>
+            </List.Accordion>
+          ))
+        }
+      </List.AccordionGroup>
+    </ScrollView>
 
 
   );
 }
 
 const styles = StyleSheet.create({
-  savedRecipesTitle: {
-    marginTop: 0,
-    paddingVertical: 6,
-    borderWidth: 3,
-    borderColor: "#20232a",
-    color: "black",
-    backgroundColor: "green",
-    fontSize: 20,
-    fontWeight: "bold",
-    borderRadius: 6,
-    textAlign: "center"
-  },
+  // savedRecipesTitle: {
+  //   marginTop: 0,
+  //   paddingVertical: 6,
+  //   borderWidth: 3,
+  //   borderColor: "#20232a",
+  //   color: "black",
+  //   backgroundColor: "green",
+  //   fontSize: 20,
+  //   fontWeight: "bold",
+  //   borderRadius: 6,
+  //   textAlign: "center"
+  // },
   ingredient: {
+    padding: 0,
     margin: 0
+  },
+  instructions: {
+    wordBreak: 'break-word',
+    flexShrink: 1
   }
 });
 
