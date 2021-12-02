@@ -5,58 +5,75 @@ import { List } from 'react-native-paper';
 import { getUserRecipes } from '../firebaseApp';
 import { getAuth } from '@firebase/auth';
 
-function SavedRecipesTab(props) {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const [data, setData] = useState([])
-    const [searchText, setSearchText] = useState('')
+function SavedRecipesTab({ navigation }) {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const [data, setData] = useState([])
+  const [searchText, setSearchText] = useState('')
 
-    useEffect(() => {
-        getUserRecipes(user).then(response => { setData(response) })
-    }, [])
+  useEffect(() => {
+    getUserRecipes(user).then(response => { setData(response) })
+  }, []);
 
-    if (!data.length) return (<Text>Loading...</Text>);
+  if (!data.length) return (<Text>Loading...</Text>);
 
-    return (
-        <View>
-            <SearchBar
-                placeholder="Search recipes"
-                onChangeText={searchText => setSearchText(searchText)}
-                value={searchText}
-            />
-            <ScrollView>
-            <List.AccordionGroup>
-                {
-                    data.map(item => (
-                        <List.Accordion key={item.uid} title={item.name} id={item.uid}>
-                            <View>
-                                <List.Item title='Ingredients' description={item.ingredients}  />
-                                <List.Item title='Instructions' description={item.instructions} />
-                            </View>
-                        </List.Accordion>
-                    ))
-                }
-            </List.AccordionGroup>
-        </ScrollView>
-        </View>
-        
+  console.log(data.ingredients)
 
-    );
+  return (
+    <ScrollView>
+      <SearchBar
+        placeholder="Search recipes"
+        onChangeText={searchText => setSearchText(searchText)}
+        value={searchText}
+      />
+      <List.AccordionGroup>
+        {
+          data.map(item => (
+            <List.Accordion key={item.name} title={item.name} id={item.timestamp}>
+              <List.Section title='INGREDIENTS'>
+                {item.ingredients.map((ingredient) => (
+                  <List.Item
+                    key={ingredient}
+                    title={ingredient}
+                    left={props => <List.Icon {...props} icon="circle-small" style={styles.ingredient} />}
+                    style={styles.ingredient}
+                  />
+                ))}
+              </List.Section>
+              <List.Section title='INSTRUCTIONS'>
+                <List.Item title={item.instructions} style={styles.instructions} titleNumberOfLines={100} />
+              </List.Section>
+            </List.Accordion>
+          ))
+        }
+      </List.AccordionGroup>
+    </ScrollView>
+
+
+  );
 }
 
 const styles = StyleSheet.create({
-    savedRecipesTitle: {
-        marginTop: 0,
-        paddingVertical: 6,
-        borderWidth: 3,
-        borderColor: "#20232a",
-        color: "black",
-        backgroundColor: "green",
-        fontSize: 20,
-        fontWeight: "bold",
-        borderRadius: 6,
-        textAlign: "center"
-    },
+  // savedRecipesTitle: {
+  //   marginTop: 0,
+  //   paddingVertical: 6,
+  //   borderWidth: 3,
+  //   borderColor: "#20232a",
+  //   color: "black",
+  //   backgroundColor: "green",
+  //   fontSize: 20,
+  //   fontWeight: "bold",
+  //   borderRadius: 6,
+  //   textAlign: "center"
+  // },
+  ingredient: {
+    padding: 0,
+    margin: 0
+  },
+  instructions: {
+    wordBreak: 'break-word',
+    flexShrink: 1
+  }
 });
 
 export default SavedRecipesTab;

@@ -2,15 +2,19 @@ import { getAuth } from '@firebase/auth';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Dialog, Headline, IconButton, Portal, Provider, Subheading, TextInput, Title } from 'react-native-paper';
+import { getAuth } from 'firebase/auth';
 
 export default function ProfileTab({ navigation }) {
   const auth = getAuth();
   const user = auth.currentUser;
   // replace default states with firebase data later
-  const [username, setUsername] = React.useState('Harrison');
+
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const [username, setUsername] = React.useState(user.nickname);
   const [userEmail, setUserEmail] = React.useState(user.email);
   const [userRestr, setUserRestr] = React.useState([]);
-  
+
   const [visible, setVisible] = React.useState(false);
 
   const showDialog = () => setVisible(true);
@@ -18,7 +22,7 @@ export default function ProfileTab({ navigation }) {
   const hideDialog = () => setVisible(false);
 
   return (
-    <Provider>        
+    <Provider>
       <View style={styles.line}>
         <Headline style={styles.title}>{username}</Headline>
         <IconButton icon='pencil' onPress={showDialog} />
@@ -28,20 +32,20 @@ export default function ProfileTab({ navigation }) {
           <Dialog.Title>Edit</Dialog.Title>
           <Dialog.Content>
             <TextInput style={styles.textInput}
-              mode='outlined' 
-              label='Name' 
+              mode='outlined'
+              label='Name'
               value={username}
               onChangeText={text => setUsername(text)}
             />
             <TextInput style={styles.textInput}
-              mode='outlined' 
-              label='Email' 
+              mode='outlined'
+              label='Email'
               value={userEmail}
               onChangeText={text => setUserEmail(text)}
             />
             <TextInput style={styles.textInput}
-              mode='outlined' 
-              label='Dietary Restrictions' 
+              mode='outlined'
+              label='Dietary Restrictions'
               value={userRestr.toString()}
               onChangeText={text => setUserRestr(text.split(', '))}
             />
@@ -53,6 +57,9 @@ export default function ProfileTab({ navigation }) {
       </Portal>
       <Subheading style={styles.text}>Email: {userEmail}</Subheading>
       <Subheading style={styles.text}>Dietary restrictions: {userRestr.toString()}</Subheading>
+      <Button mode="contained" testID="signOut" style={styles.button} onPress={() => null}>
+        Log Out
+      </Button>
     </Provider>
   );
 };

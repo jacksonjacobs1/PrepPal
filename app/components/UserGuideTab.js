@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView, Text } from 'react-native';
 
-function UserGuideTab() {
+function UserGuideTab({ navigation }) {
   return (
     <ScrollView testID='userGuideTab'>
       <Text>PrepPal User Guide</Text>
