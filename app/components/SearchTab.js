@@ -12,7 +12,8 @@ function SearchTab({ navigation }) {
   const [generalQueryText, setGeneralQueryText] = React.useState('')
   const [selectedItem1, setMenuText1] = React.useState('')
   const [selectedItem2, setMenuText2] = React.useState('')
-  const [barNum, setBarNum] = React.useState(3)
+  const [barNum, setBarNum] = React.useState(3) // Current number of elements in displayedList.
+  const [idForNewBar, setIdForNewBar] = React.useState(4) // Current smallest value that is NOT a key in displayedList.
 
   const ingredientBarList = [
     {key: '1'},
@@ -23,13 +24,29 @@ function SearchTab({ navigation }) {
   const [displayedList, setDisplayedList] = React.useState(ingredientBarList)
 
   const addIngredientMethod = () => {
-    setDisplayedList([...displayedList, {key: (barNum + 1).toString()}]);
+    setDisplayedList([...displayedList, {key: (idForNewBar).toString()}]);
     setBarNum(barNum + 1);
+    var i;
+    for(i = idForNewBar + 1; i > idForNewBar; i++) {
+      var isIndex = 0; // Set to 0 if i never appears as an index in displayedList and 1 otherwise.
+      for(j = 0; j < displayedList.length; j++) {
+        if(displayedList[j].key == i) {
+          isIndex = 1;
+        }
+      }
+      if(isIndex == 0) {
+        setIdForNewBar(i); // Sets idForNewBar to the smallest index that never appears in displayList.
+        return;
+      }
+    }
   }
 
   const deleteIngredientMethod = (givenKey) => {
     setDisplayedList(displayedList.filter(item => item.key != givenKey));
     setBarNum(barNum - 1);
+    if(givenKey.toString() < idForNewBar) {
+      setIdForNewBar(givenKey);
+    }
   }
 
   const createDataForIngredientSearch = () => {
